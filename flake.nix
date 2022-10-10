@@ -33,8 +33,8 @@
                         }) { llvm-config = llvm; }).overrideAttrs (old: {
                                version = "${old.version}-${version}";
                              })) [
-                          "--ghc-option=-optl=-L/${llvm}/lib"
-                          "--ghc-option=-optl=-I/${llvm}/include"
+                          "--ghc-option=-optl=-L${llvm.dev}/lib"
+                          "--ghc-option=-optl=-I${llvm.dev}/include"
                           "--ghc-option=-optl=-lLLVM-${toString llvmVersion}"
                         ];
                   };
@@ -57,7 +57,7 @@
           imports = [ ];
           packages = with pkgs;
             with haskellPackages; [
-              pkgs.llvmPackages_14.llvm.dev
+              pkgs."llvmPackages_${toString llvmVersion}".llvm.dev
               pkgs.ghcid
               (ghcWithPackages (p:
                 with p; [
