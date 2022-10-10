@@ -9,7 +9,7 @@
   outputs = { self, np, fu, ds, nf, ... }@inputs:
     with np.lib;
     with fu.lib;
-    eachSystem [ "aarch64-darwin" ] (system:
+    eachSystem [ "x86_64-linux" ] (system:
       let
         ghcVersion = "902";
         llvmVersion = 14;
